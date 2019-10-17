@@ -14,6 +14,10 @@ public class CityMapper {
         city.setId(cityDto.getId());
         city.setName(cityDto.getName());
 
+        if (cityDto.getStateDto() != null) {
+            city.setState(new StateMapper().convertToEntity(cityDto.getStateDto()));
+        }
+
         return city;
     }
 
@@ -22,6 +26,10 @@ public class CityMapper {
 
         cityDto.setId(city.getId());
         cityDto.setName(city.getName());
+
+        if (city.getState() != null) {
+            cityDto.setStateDto(new StateMapper().convertToDto(city.getState()));
+        }
 
         return cityDto;
     }
