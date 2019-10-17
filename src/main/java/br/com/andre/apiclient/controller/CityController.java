@@ -1,13 +1,17 @@
 package br.com.andre.apiclient.controller;
 
 import br.com.andre.apiclient.dto.CityDto;
+import br.com.andre.apiclient.mapper.CityMapper;
+import br.com.andre.apiclient.mapper.StateMapper;
 import br.com.andre.apiclient.model.City;
 import br.com.andre.apiclient.service.CityService;
+import br.com.andre.apiclient.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
+
 import java.util.List;
 
 @RequestMapping(value = "/cities")
@@ -17,26 +21,37 @@ public class CityController {
     @Autowired
     private CityService cityService;
 
+    @Autowired
+    private StateService stateService;
+
+    private CityMapper cityMapper = new CityMapper();
+
     @GetMapping
     public List<CityDto> getAll() {
-        return cityService.getAll();
+        return cityMapper.convertListToDto(cityService.getAll());
     }
 
     @GetMapping(value = "/{id}")
     public CityDto findById(@PathVariable Integer id) {
-        return cityService.findById(id);
+        return cityMapper.convertToDto(cityService.findById(id));
     }
 
     @Transactional
     @PostMapping
     public CityDto add(@RequestBody CityDto cityDto) {
-        return cityService.save(cityDto);
+        City city = cityMapper.convertToEntity(cityDto);
+
+        return cityMapper.convertToDto(cityService.save(city));
     }
 
     @Transactional
     @PutMapping(value = "/{id}")
     public CityDto update(@PathVariable Integer id, @RequestBody CityDto cityDto) {
-        return cityService.save(id,cityDto);
+
+        City city = cityService.save(cityMapper.convertToEntity(cityDto));
+
+
+        return cityMapper.convertToDto(city);
     }
 
     @Transactional

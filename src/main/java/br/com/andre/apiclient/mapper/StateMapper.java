@@ -13,7 +13,7 @@ public class StateMapper {
 
         state.setId(stateDto.getId());
         state.setName(stateDto.getName());
-        state.setUf(stateDto.getUf());
+        state.setInitials(stateDto.getInitials());
 
         return state;
     }
@@ -23,7 +23,7 @@ public class StateMapper {
 
         stateDto.setId(state.getId());
         stateDto.setName(state.getName());
-        stateDto.setUf(state.getUf());
+        stateDto.setInitials(state.getInitials());
 
         return stateDto;
     }

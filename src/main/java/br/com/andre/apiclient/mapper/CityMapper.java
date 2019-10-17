@@ -6,7 +6,7 @@ import br.com.andre.apiclient.model.City;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CityMapper {
+public class  CityMapper {
 
     public City convertToEntity(CityDto cityDto) {
         City city = new City();
@@ -14,8 +14,8 @@ public class CityMapper {
         city.setId(cityDto.getId());
         city.setName(cityDto.getName());
 
-        if (cityDto.getStateDto() != null) {
-            city.setState(new StateMapper().convertToEntity(cityDto.getStateDto()));
+        if (cityDto.getState() != null) {
+            city.setState(new StateMapper().convertToEntity(cityDto.getState()));
         }
 
         return city;
@@ -28,13 +28,13 @@ public class CityMapper {
         cityDto.setName(city.getName());
 
         if (city.getState() != null) {
-            cityDto.setStateDto(new StateMapper().convertToDto(city.getState()));
+            cityDto.setState(new StateMapper().convertToDto(city.getState()));
         }
 
         return cityDto;
     }
 
-    public List<CityDto> convertListToDto(List<City> cities){
+    public  List<CityDto> convertListToDto(List<City> cities){
         return cities.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 

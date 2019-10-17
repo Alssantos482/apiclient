@@ -20,5 +20,5 @@ public class State {
     private Integer id;
 
     private String name;
-    private String uf;
+    private String initials;
 }

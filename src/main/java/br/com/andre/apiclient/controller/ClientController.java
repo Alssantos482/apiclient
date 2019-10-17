@@ -1,6 +1,7 @@
 package br.com.andre.apiclient.controller;
 
 import br.com.andre.apiclient.dto.ClientDto;
+import br.com.andre.apiclient.mapper.ClientMapper;
 import br.com.andre.apiclient.model.Client;
 import br.com.andre.apiclient.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,26 +16,32 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
+    private ClientMapper clientMapper;
+
     @GetMapping
     public List<ClientDto> getAll() {
-        return clientService.getAll();
+        return clientMapper.convertListToDto(clientService.getAll());
     }
 
     @GetMapping(value = "/{id}")
     public ClientDto findById(@PathVariable Integer id) {
-        return clientService.findById(id);
+        return clientMapper.convertToDto(clientService.findById(id));
     }
 
     @Transactional
     @PostMapping
     public ClientDto add(@RequestBody ClientDto clientDto) {
-        return clientService.save(clientDto);
+        Client client = clientMapper.convertToEntity(clientDto);
+
+        return clientMapper.convertToDto(clientService.save(client));
     }
 
     @Transactional
     @PutMapping(value = "/{id}")
     public ClientDto update(@PathVariable Integer id, @RequestBody ClientDto clientDto) {
-        return clientService.save(id,clientDto);
+        Client client = clientMapper.convertToEntity(clientDto);
+
+        return clientMapper.convertToDto(clientService.save(id,client));
     }
 
     @Transactional

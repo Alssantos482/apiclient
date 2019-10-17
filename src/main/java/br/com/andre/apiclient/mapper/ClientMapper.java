@@ -1,8 +1,7 @@
 package br.com.andre.apiclient.mapper;
 
-import br.com.andre.apiclient.dto.AddressDto;
+
 import br.com.andre.apiclient.dto.ClientDto;
-import br.com.andre.apiclient.model.Address;
 import br.com.andre.apiclient.model.Client;
 
 import java.util.List;

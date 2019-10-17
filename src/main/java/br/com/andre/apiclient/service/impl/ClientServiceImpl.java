@@ -1,7 +1,5 @@
 package br.com.andre.apiclient.service.impl;
 
-import br.com.andre.apiclient.dto.ClientDto;
-import br.com.andre.apiclient.mapper.ClientMapper;
 import br.com.andre.apiclient.model.Client;
 import br.com.andre.apiclient.repository.ClientRepository;
 import br.com.andre.apiclient.service.ClientService;
@@ -16,31 +14,27 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    private ClientMapper clientMapper = new ClientMapper();
-
     @Override
-    public List<ClientDto> getAll(){
-        return clientMapper.convertListToDto(clientRepository.findAll());
+    public List<Client> getAll(){
+        return clientRepository.findAll();
     }
 
     @Override
-    public ClientDto findById(Integer id){
-        return this.clientMapper.convertToDto(clientRepository.findById(id).get());
+    public Client findById(Integer id){
+        return clientRepository.findById(id).get();
     }
 
     @Override
-    public ClientDto save(ClientDto clientDto){
-        Client client  = this.clientMapper.convertToEntity(clientDto);
+    public Client save(Client client){
 
-        return clientMapper.convertToDto(clientRepository.save(client));
+        return clientRepository.save(client);
     }
 
-    public ClientDto save(Integer id, ClientDto clientDto){
-        Client client = clientRepository.getOne(id);
-        client.setName(clientDto.getName());
+    public Client save(Integer id, Client client) {
+        Client clientNew = clientRepository.getOne(id);
+        client.setName(client.getName());
 
-        return clientMapper.convertToDto(client);
-
+        return client;
     }
 
     @Override

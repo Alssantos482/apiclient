@@ -8,16 +8,14 @@ import java.util.List;
 
 public interface ClientService {
 
-    List<ClientDto> getAll();
+    List<Client> getAll();
 
-    ClientDto findById(Integer id);
+    Client findById(Integer id);
 
-    ClientDto save(ClientDto clientDto);
+    Client save(Client client);
 
-    ClientDto save(Integer id, ClientDto clientDto);
+    Client save(Integer id, Client client);
 
     void delete(Integer id);
-
-
 
 }

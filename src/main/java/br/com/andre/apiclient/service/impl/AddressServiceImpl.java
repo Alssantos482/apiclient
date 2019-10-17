@@ -16,34 +16,30 @@ public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
-    private AddressMapper addressMapper = new AddressMapper();
-
     @Override
-    public List<AddressDto> getAll(){
-        return addressMapper.convertListToDto(addressRepository.findAll());
+    public List<Address> getAll(){
+        return addressRepository.findAll();
     }
 
     @Override
-    public AddressDto findById(Integer id){
-        return this.addressMapper.convertToDto(addressRepository.findById(id).get());
+    public Address findById(Integer id){
+        return addressRepository.findById(id).get();
     }
 
     @Override
-    public AddressDto save(AddressDto addressDto){
-        Address address  = this.addressMapper.convertToEntity(addressDto);
-
-        return addressMapper.convertToDto(addressRepository.save(address));
+    public Address save(Address address){
+        return addressRepository.save(address);
     }
 
-    public AddressDto save(Integer id, AddressDto addressDto){
-        Address address = addressRepository.getOne(id);
-        address.setStreet(addressDto.getStreet());
-        address.setNumber(addressDto.getNumber());
-        address.setDistrict(addressDto.getDistrict());
-        address.setComplement(addressDto.getComplement());
-        address.setCity(new CityMapper().convertToEntity(addressDto.getCity()));
+    public Address save(Integer id, Address address){
+        Address addressNew = addressRepository.getOne(id);
+        addressNew.setStreet(address.getStreet());
+        addressNew.setNumber(address.getNumber());
+        addressNew.setDistrict(address.getDistrict());
+        addressNew.setComplement(address.getComplement());
+        addressNew.setCity(address.getCity());
 
-        return addressMapper.convertToDto(address);
+        return address;
 
     }
 
