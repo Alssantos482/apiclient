@@ -25,6 +25,11 @@ public class Client {
     private String name;
     private LocalDateTime birthDate;
 
+    @JoinColumn(name = "idAddress", nullable = false)
+    @ManyToOne
+    private Address address;
+
+
 
 
 }

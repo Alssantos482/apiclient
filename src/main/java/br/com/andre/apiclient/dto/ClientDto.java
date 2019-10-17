@@ -15,6 +15,6 @@ public class ClientDto {
     private String name;
     private String cpf;
     private LocalDateTime birthDate;
-
+    private AddressDto address;
 
 }
