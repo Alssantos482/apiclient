@@ -19,28 +19,25 @@ public class StateServiceImpl implements StateService {
     private StateMapper stateMapper = new StateMapper();
 
     @Override
-    public List<StateDto> getAll(){
-        return stateMapper.convertListToDto(stateRepository.findAll());
+    public List<State> getAll(){
+        return stateRepository.findAll();
     }
 
     @Override
-    public StateDto findById(Integer id){
-        return this.stateMapper.convertToDto(stateRepository.findById(id).get());
+    public State findById(Integer id){
+        return stateRepository.findById(id).get();
     }
 
     @Override
-    public StateDto save(StateDto stateDto){
-        State state  = this.stateMapper.convertToEntity(stateDto);
+    public State save(State state){
 
-        return stateMapper.convertToDto(stateRepository.save(state));
+        return stateRepository.save(state);
     }
 
-    public StateDto save(Integer id, StateDto stateDto){
-        State state = stateRepository.getOne(id);
-        state.setName(stateDto.getName());
-        state.setUf(stateDto.getUf());
+    public State save(Integer id, State state){
+        state.setId(id);
 
-        return stateMapper.convertToDto(state);
+        return stateRepository.save(state);
 
     }
 

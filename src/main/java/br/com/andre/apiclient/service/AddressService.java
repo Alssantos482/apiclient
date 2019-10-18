@@ -1,18 +1,18 @@
 package br.com.andre.apiclient.service;
 
-import br.com.andre.apiclient.dto.AddressDto;
+import br.com.andre.apiclient.model.Address;
 
 import java.util.List;
 
 public interface AddressService {
 
-    List<AddressDto> getAll();
+    List<Address> getAll();
 
-    AddressDto findById(Integer id);
+    Address findById(Integer id);
 
-    AddressDto save(AddressDto addressDto);
+    Address save(Address addressDto);
 
-    AddressDto save(Integer id, AddressDto addressDto);
+    Address save(Integer id, Address address);
 
     void delete(Integer id);
 

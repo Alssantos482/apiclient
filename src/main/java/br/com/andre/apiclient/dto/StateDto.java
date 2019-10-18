@@ -12,6 +12,6 @@ public class StateDto {
 
     private Integer id;
     private String name;
-    private String uf;
+    private String initials;
 
 }

@@ -19,7 +19,7 @@ public class City {
     private String name;
 
     @JoinColumn(name = "idState", nullable = false)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private State state;
 
 }

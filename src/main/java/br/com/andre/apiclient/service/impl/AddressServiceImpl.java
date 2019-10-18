@@ -5,7 +5,9 @@ import br.com.andre.apiclient.mapper.AddressMapper;
 import br.com.andre.apiclient.mapper.CityMapper;
 import br.com.andre.apiclient.model.Address;
 import br.com.andre.apiclient.repository.AddressRepository;
+import br.com.andre.apiclient.repository.CityRepository;
 import br.com.andre.apiclient.service.AddressService;
+import br.com.andre.apiclient.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,35 +18,31 @@ public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
-    private AddressMapper addressMapper = new AddressMapper();
+    @Autowired
+    private CityService cityService;
 
     @Override
-    public List<AddressDto> getAll(){
-        return addressMapper.convertListToDto(addressRepository.findAll());
+    public List<Address> getAll(){
+        return addressRepository.findAll();
     }
 
     @Override
-    public AddressDto findById(Integer id){
-        return this.addressMapper.convertToDto(addressRepository.findById(id).get());
+    public Address findById(Integer id){
+        return addressRepository.findById(id).get();
     }
 
     @Override
-    public AddressDto save(AddressDto addressDto){
-        Address address  = this.addressMapper.convertToEntity(addressDto);
+    public Address save(Address address){
+        address.setCity(cityService.findById(address.getCity().getId()));
 
-        return addressMapper.convertToDto(addressRepository.save(address));
+        return addressRepository.save(address);
     }
 
-    public AddressDto save(Integer id, AddressDto addressDto){
-        Address address = addressRepository.getOne(id);
-        address.setStreet(addressDto.getStreet());
-        address.setNumber(addressDto.getNumber());
-        address.setDistrict(addressDto.getDistrict());
-        address.setComplement(addressDto.getComplement());
-        address.setCity(new CityMapper().convertToEntity(addressDto.getCity()));
+    public Address save(Integer id, Address address) {
+        address.setId(id);
+        address.setCity(cityService.findById(address.getCity().getId()));
 
-        return addressMapper.convertToDto(address);
-
+        return addressRepository.save(address);
     }
 
     @Override

@@ -1,6 +1,8 @@
 package br.com.andre.apiclient.controller;
 
 import br.com.andre.apiclient.dto.AddressDto;
+import br.com.andre.apiclient.mapper.AddressMapper;
+import br.com.andre.apiclient.model.Address;
 import br.com.andre.apiclient.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,26 +17,32 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
+    private AddressMapper addressMapper = new AddressMapper();
+
     @GetMapping
     public List<AddressDto> getAll() {
-        return addressService.getAll();
+        return addressMapper.convertListToDto(addressService.getAll());
     }
 
     @GetMapping(value = "/{id}")
     public AddressDto findById(@PathVariable Integer id) {
-        return addressService.findById(id);
+        return addressMapper.convertToDto(addressService.findById(id));
     }
 
     @Transactional
     @PostMapping
     public AddressDto add(@RequestBody AddressDto addressDto) {
-        return addressService.save(addressDto);
+        Address address = addressMapper.convertToEntity(addressDto);
+
+        return addressMapper.convertToDto(addressService.save(address));
     }
 
     @Transactional
     @PutMapping(value = "/{id}")
     public AddressDto update(@PathVariable Integer id, @RequestBody AddressDto addressDto) {
-        return addressService.save(id,addressDto);
+        Address address = addressMapper.convertToEntity(addressDto);
+
+        return addressMapper.convertToDto(addressService.save(id,address));
     }
 
     @Transactional

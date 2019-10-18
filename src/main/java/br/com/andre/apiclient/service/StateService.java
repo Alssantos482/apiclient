@@ -1,18 +1,18 @@
 package br.com.andre.apiclient.service;
 
-import br.com.andre.apiclient.dto.StateDto;
+import br.com.andre.apiclient.model.State;
 
 import java.util.List;
 
 public interface StateService {
 
-    List<StateDto> getAll();
+    List<State> getAll();
 
-    StateDto findById(Integer id);
+    State findById(Integer id);
 
-    StateDto save(StateDto stateDto);
+    State save(State state);
 
-    StateDto save(Integer id, StateDto stateDto);
+    State save(Integer id, State state);
 
     void delete(Integer id);
 
