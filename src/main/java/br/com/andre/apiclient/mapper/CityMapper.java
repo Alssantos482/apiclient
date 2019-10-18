@@ -2,6 +2,7 @@ package br.com.andre.apiclient.mapper;
 
 import br.com.andre.apiclient.dto.CityDto;
 import br.com.andre.apiclient.model.City;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,8 +35,8 @@ public class  CityMapper {
         return cityDto;
     }
 
-    public  List<CityDto> convertListToDto(List<City> cities){
-        return cities.stream().map(this::convertToDto).collect(Collectors.toList());
+    public Page<CityDto> convertPageToDto(Page<City> cities){
+        return cities.map(this::convertToDto);
     }
 
 }

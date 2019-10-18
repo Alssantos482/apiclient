@@ -9,6 +9,8 @@ import br.com.andre.apiclient.repository.CityRepository;
 import br.com.andre.apiclient.service.AddressService;
 import br.com.andre.apiclient.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,8 @@ public class AddressServiceImpl implements AddressService {
     private CityService cityService;
 
     @Override
-    public List<Address> getAll(){
-        return addressRepository.findAll();
+    public Page<Address> getAll(Pageable page){
+        return addressRepository.findAll(page);
     }
 
     @Override

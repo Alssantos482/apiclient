@@ -1,12 +1,14 @@
 package br.com.andre.apiclient.service;
 
 import br.com.andre.apiclient.model.State;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface StateService {
 
-    List<State> getAll();
+    Page<State> getAll(Pageable page);
 
     State findById(Integer id);
 
