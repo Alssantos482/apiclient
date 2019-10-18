@@ -5,6 +5,8 @@ import br.com.andre.apiclient.mapper.AddressMapper;
 import br.com.andre.apiclient.model.Address;
 import br.com.andre.apiclient.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +22,8 @@ public class AddressController {
     private AddressMapper addressMapper = new AddressMapper();
 
     @GetMapping
-    public List<AddressDto> getAll() {
-        return addressMapper.convertListToDto(addressService.getAll());
+    public Page<AddressDto> getAll(Pageable page) {
+        return addressMapper.convertPageToDto(addressService.getAll(page));
     }
 
     @GetMapping(value = "/{id}")

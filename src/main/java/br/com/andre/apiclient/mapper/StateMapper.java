@@ -2,6 +2,7 @@ package br.com.andre.apiclient.mapper;
 
 import br.com.andre.apiclient.dto.StateDto;
 import br.com.andre.apiclient.model.State;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +29,7 @@ public class StateMapper {
         return stateDto;
     }
 
-    public List<StateDto> convertListToDto(List<State> states){
-        return states.stream().map(this::convertToDto).collect(Collectors.toList());
+    public Page<StateDto> convertPageToDto(Page<State> states){
+        return states.map(this::convertToDto);
     }
 }

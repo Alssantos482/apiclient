@@ -6,6 +6,8 @@ import br.com.andre.apiclient.model.State;
 import br.com.andre.apiclient.repository.StateRepository;
 import br.com.andre.apiclient.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class StateServiceImpl implements StateService {
     private StateMapper stateMapper = new StateMapper();
 
     @Override
-    public List<State> getAll(){
-        return stateRepository.findAll();
+    public Page<State> getAll(Pageable page){
+        return stateRepository.findAll(page);
     }
 
     @Override

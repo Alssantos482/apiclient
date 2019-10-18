@@ -3,6 +3,7 @@ package br.com.andre.apiclient.mapper;
 
 import br.com.andre.apiclient.dto.AddressDto;
 import br.com.andre.apiclient.model.Address;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,7 +46,7 @@ public class AddressMapper {
         return addressDto;
     }
 
-    public List<AddressDto> convertListToDto(List<Address> addresses){
-        return addresses.stream().map(this::convertToDto).collect(Collectors.toList());
+    public Page<AddressDto> convertPageToDto(Page<Address> addresses){
+        return addresses.map(this::convertToDto);
     }
 }

@@ -7,10 +7,11 @@ import br.com.andre.apiclient.model.City;
 import br.com.andre.apiclient.service.CityService;
 import br.com.andre.apiclient.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class CityController {
     private CityMapper cityMapper = new CityMapper();
 
     @GetMapping
-    public List<CityDto> getAll() {
-        return cityMapper.convertListToDto(cityService.getAll());
+    public Page<CityDto> getAll(Pageable page) {
+        return cityMapper.convertPageToDto(cityService.getAll(page));
     }
 
     @GetMapping(value = "/{id}")

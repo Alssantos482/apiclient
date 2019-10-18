@@ -5,6 +5,8 @@ import br.com.andre.apiclient.mapper.StateMapper;
 import br.com.andre.apiclient.model.State;
 import br.com.andre.apiclient.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +22,9 @@ public class StateController {
     private StateMapper stateMapper = new StateMapper();
 
     @GetMapping
-    public List<StateDto> getAll() {
-        return stateMapper.convertListToDto(stateService.getAll());
+    public Page<StateDto> getAll(Pageable page) {
+        return stateMapper.convertPageToDto(stateService.getAll(page));
     }
-
     @GetMapping(value = "/{id}")
     public StateDto findById(@PathVariable Integer id) {
         return stateMapper.convertToDto(stateService.findById(id));

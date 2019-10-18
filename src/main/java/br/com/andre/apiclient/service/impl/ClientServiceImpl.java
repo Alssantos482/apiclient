@@ -6,6 +6,8 @@ import br.com.andre.apiclient.repository.ClientRepository;
 import br.com.andre.apiclient.service.AddressService;
 import br.com.andre.apiclient.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +22,8 @@ public class ClientServiceImpl implements ClientService {
     private AddressService addressService;
 
     @Override
-    public List<Client> getAll(){
-        return clientRepository.findAll();
+    public Page<Client> getAll(Pageable page){
+        return clientRepository.findAll(page);
     }
 
     @Override
