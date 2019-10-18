@@ -31,9 +31,16 @@ public class CityServiceImpl implements CityService {
     @Override
     public City save(City city){
         city.setState(stateService.findById(city.getState().getId()));
+
         return cityRepository.save(city);
     }
 
+    public City save(Integer id, City city){
+        city.setId(id);
+        city.setState(stateService.findById(city.getState().getId()));
+
+        return cityRepository.save(city);
+    }
 
     @Override
     public void delete(Integer id){

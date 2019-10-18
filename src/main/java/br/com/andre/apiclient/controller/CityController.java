@@ -48,8 +48,7 @@ public class CityController {
     @PutMapping(value = "/{id}")
     public CityDto update(@PathVariable Integer id, @RequestBody CityDto cityDto) {
 
-        City city = cityService.save(cityMapper.convertToEntity(cityDto));
-
+        City city = cityService.save(id, cityMapper.convertToEntity(cityDto));
 
         return cityMapper.convertToDto(city);
     }

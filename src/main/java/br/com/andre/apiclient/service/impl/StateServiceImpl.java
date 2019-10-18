@@ -35,11 +35,9 @@ public class StateServiceImpl implements StateService {
     }
 
     public State save(Integer id, State state){
-        State stateNew = stateRepository.getOne(id);
-        stateNew.setName(state.getName());
-        stateNew.setInitials(state.getInitials());
+        state.setId(id);
 
-        return stateNew;
+        return stateRepository.save(state);
 
     }
 

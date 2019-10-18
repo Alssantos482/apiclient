@@ -16,7 +16,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    private ClientMapper clientMapper;
+    private ClientMapper clientMapper = new ClientMapper();
 
     @GetMapping
     public List<ClientDto> getAll() {

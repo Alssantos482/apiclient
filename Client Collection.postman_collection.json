@@ -1,0 +1,327 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Client Collection",
+		"_postman_id": "1f14db00-5ba3-b563-47f0-94b0af3af8c1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"description": "Client Controllers",
+			"item": [
+				{
+					"name": "Get Client",
+					"request": {
+						"url": "http://localhost:8080/clients/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client By Id",
+					"request": {
+						"url": "http://localhost:8080/clients/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Post Client",
+					"request": {
+						"url": "http://localhost:8080/clients/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n\t\"name\":\"PRETO\",\n\t\"cpf\":\"01365201201\",\n\t\"birthDate\":\"1994-05-06\",\n\t\"address\":{\n\t\t\"id\":1\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Put Client",
+					"request": {
+						"url": "http://localhost:8080/clients/3",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Whieete\",\n\t\"cpf\":\"01365201201\",\n\t\"birthDate\":\"1994-05-06\",\n\t\"address\":{\n\t\t\"id\":1\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"url": "http://localhost:8080/clients/3",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City",
+			"description": "Client Controllers",
+			"item": [
+				{
+					"name": "Get City",
+					"request": {
+						"url": "http://localhost:8080/cities/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get City By Id",
+					"request": {
+						"url": "http://localhost:8080/cities/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Post City",
+					"request": {
+						"url": "http://localhost:8080/cities/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"name\": \"manaus\",\n    \"state\": {\n        \"id\": 1,\n        \"name\": \"Amazonas\",\n        \"initials\": \"AM\"\n    }\n }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Put City",
+					"request": {
+						"url": "http://localhost:8080/cities/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"name\": \"Tefé\",\n        \"state\": {\n            \"id\": 1\n        }\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete City",
+					"request": {
+						"url": "http://localhost:8080/cities/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "State",
+			"description": "Client Controllers",
+			"item": [
+				{
+					"name": "Get State",
+					"request": {
+						"url": "http://localhost:8080/states/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get State By Id",
+					"request": {
+						"url": "http://localhost:8080/states/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Post State",
+					"request": {
+						"url": "http://localhost:8080/states/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pará\",\n    \"initials\": \"PA\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Put State",
+					"request": {
+						"url": "http://localhost:8080/states/3",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pará\",\n    \"initials\": \"PAA\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete State",
+					"request": {
+						"url": "http://localhost:8080/states/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"description": "Client Controllers",
+			"item": [
+				{
+					"name": "Get Address",
+					"request": {
+						"url": "http://localhost:8080/addresses/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Address By Id",
+					"request": {
+						"url": "http://localhost:8080/addresses/2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Post Address",
+					"request": {
+						"url": "http://localhost:8080/addresses/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"street\": \"YANZAO\",\n        \"number\": \"69\",\n        \"complement\": \"YAN DE NOVO\",\n        \"district\": \"YAN\",\n        \"city\": {\n            \"id\": 1\n        }\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Put Address",
+					"request": {
+						"url": "http://localhost:8080/addresses/3",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"street\": \"YANZAO1\",\n        \"number\": \"619\",\n        \"complement\": \"YAN1 DE NOVO\",\n        \"district\": \"YA1N\",\n        \"city\": {\n            \"id\": 1\n        }\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"url": "http://localhost:8080/addresses/3",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

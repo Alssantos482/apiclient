@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,7 +15,7 @@ public class ClientDto {
     private Integer id;
     private String name;
     private String cpf;
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
     private AddressDto address;
 
 }

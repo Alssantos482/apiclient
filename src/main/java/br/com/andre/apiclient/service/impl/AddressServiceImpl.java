@@ -5,7 +5,9 @@ import br.com.andre.apiclient.mapper.AddressMapper;
 import br.com.andre.apiclient.mapper.CityMapper;
 import br.com.andre.apiclient.model.Address;
 import br.com.andre.apiclient.repository.AddressRepository;
+import br.com.andre.apiclient.repository.CityRepository;
 import br.com.andre.apiclient.service.AddressService;
+import br.com.andre.apiclient.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private CityService cityService;
 
     @Override
     public List<Address> getAll(){
@@ -28,19 +33,16 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address save(Address address){
+        address.setCity(cityService.findById(address.getCity().getId()));
+
         return addressRepository.save(address);
     }
 
-    public Address save(Integer id, Address address){
-        Address addressNew = addressRepository.getOne(id);
-        addressNew.setStreet(address.getStreet());
-        addressNew.setNumber(address.getNumber());
-        addressNew.setDistrict(address.getDistrict());
-        addressNew.setComplement(address.getComplement());
-        addressNew.setCity(address.getCity());
+    public Address save(Integer id, Address address) {
+        address.setId(id);
+        address.setCity(cityService.findById(address.getCity().getId()));
 
-        return address;
-
+        return addressRepository.save(address);
     }
 
     @Override

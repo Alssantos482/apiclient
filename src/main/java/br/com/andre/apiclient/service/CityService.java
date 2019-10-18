@@ -1,5 +1,6 @@
 package br.com.andre.apiclient.service;
 
+
 import br.com.andre.apiclient.model.City;
 
 import java.util.List;
@@ -11,6 +12,8 @@ public interface CityService {
     City findById(Integer id);
 
     City save(City city);
+
+    City save(Integer id, City city);
 
     void delete(Integer id);
 }

@@ -1,7 +1,9 @@
 package br.com.andre.apiclient.service.impl;
 
+import br.com.andre.apiclient.model.Address;
 import br.com.andre.apiclient.model.Client;
 import br.com.andre.apiclient.repository.ClientRepository;
+import br.com.andre.apiclient.service.AddressService;
 import br.com.andre.apiclient.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private AddressService addressService;
 
     @Override
     public List<Client> getAll(){
@@ -26,15 +31,16 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client save(Client client){
+        client.setAddress(addressService.findById(client.getAddress().getId()));
 
         return clientRepository.save(client);
     }
 
     public Client save(Integer id, Client client) {
-        Client clientNew = clientRepository.getOne(id);
-        client.setName(client.getName());
+        client.setId(id);
+        client.setAddress(addressService.findById(client.getAddress().getId()));
 
-        return client;
+        return clientRepository.save(client);
     }
 
     @Override

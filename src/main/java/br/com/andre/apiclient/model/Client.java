@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -23,7 +24,7 @@ public class Client {
     private String cpf;
 
     private String name;
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
     @JoinColumn(name = "idAddress", nullable = false)
     @ManyToOne
