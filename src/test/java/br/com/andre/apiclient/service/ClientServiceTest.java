@@ -15,6 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,7 +38,7 @@ public class ClientServiceTest {
     public void TestSaveClient () {
         //Arrange
         Address address = new Address(0, "1", "12", "asd", "asd", new City(), null);
-        Client client = new Client(0, "asd", "asd",LocalDate.of(1994,05,06), address);
+        Client client = new Client(0, "asd", "asd",new Date(LocalDate.of(1994,05,06).atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli()), address);
         Client clientSaved = null;
 
         when(addressService.findById(Mockito.any())).thenReturn(address);
