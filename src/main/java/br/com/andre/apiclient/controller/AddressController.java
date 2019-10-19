@@ -10,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RequestMapping(value = "/addresses")
 @RestController
 public class AddressController {

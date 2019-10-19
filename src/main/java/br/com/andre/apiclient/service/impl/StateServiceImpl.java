@@ -1,6 +1,5 @@
 package br.com.andre.apiclient.service.impl;
 
-import br.com.andre.apiclient.dto.StateDto;
 import br.com.andre.apiclient.mapper.StateMapper;
 import br.com.andre.apiclient.model.State;
 import br.com.andre.apiclient.repository.StateRepository;
@@ -10,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StateServiceImpl implements StateService {
@@ -27,7 +26,8 @@ public class StateServiceImpl implements StateService {
 
     @Override
     public State findById(Integer id){
-        return stateRepository.findById(id).get();
+        Optional<State> value = stateRepository.findById(id);
+        return value.isPresent() ? value.get() : null;
     }
 
     @Override

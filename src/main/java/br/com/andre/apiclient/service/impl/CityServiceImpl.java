@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CityServiceImpl implements CityService {
@@ -27,7 +27,8 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City findById(Integer id){
-        return cityRepository.findById(id).get();
+        Optional<City> value = cityRepository.findById(id);
+        return value.isPresent() ? value.get() : null;
     }
 
     @Override
