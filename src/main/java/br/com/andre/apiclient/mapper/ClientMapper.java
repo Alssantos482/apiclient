@@ -5,8 +5,6 @@ import br.com.andre.apiclient.dto.ClientDto;
 import br.com.andre.apiclient.model.Client;
 import org.springframework.data.domain.Page;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ClientMapper  {
 

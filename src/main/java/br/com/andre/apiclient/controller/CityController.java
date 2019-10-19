@@ -2,18 +2,15 @@ package br.com.andre.apiclient.controller;
 
 import br.com.andre.apiclient.dto.CityDto;
 import br.com.andre.apiclient.mapper.CityMapper;
-import br.com.andre.apiclient.mapper.StateMapper;
 import br.com.andre.apiclient.model.City;
 import br.com.andre.apiclient.service.CityService;
 import br.com.andre.apiclient.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RequestMapping(value = "/cities")
 @RestController

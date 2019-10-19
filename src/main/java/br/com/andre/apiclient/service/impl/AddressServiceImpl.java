@@ -1,11 +1,7 @@
 package br.com.andre.apiclient.service.impl;
 
-import br.com.andre.apiclient.dto.AddressDto;
-import br.com.andre.apiclient.mapper.AddressMapper;
-import br.com.andre.apiclient.mapper.CityMapper;
 import br.com.andre.apiclient.model.Address;
 import br.com.andre.apiclient.repository.AddressRepository;
-import br.com.andre.apiclient.repository.CityRepository;
 import br.com.andre.apiclient.service.AddressService;
 import br.com.andre.apiclient.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -30,7 +26,8 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address findById(Integer id){
-        return addressRepository.findById(id).get();
+        Optional<Address> value = addressRepository.findById(id);
+        return value.isPresent() ? value.get() : null;
     }
 
     @Override

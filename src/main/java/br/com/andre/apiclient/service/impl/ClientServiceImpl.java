@@ -1,6 +1,5 @@
 package br.com.andre.apiclient.service.impl;
 
-import br.com.andre.apiclient.model.Address;
 import br.com.andre.apiclient.model.Client;
 import br.com.andre.apiclient.repository.ClientRepository;
 import br.com.andre.apiclient.service.AddressService;
@@ -10,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -28,7 +27,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client findById(Integer id){
-        return clientRepository.findById(id).get();
+        Optional<Client> value = clientRepository.findById(id);
+        return value.isPresent() ? value.get() : null;
     }
 
     @Override
