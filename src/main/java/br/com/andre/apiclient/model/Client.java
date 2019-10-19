@@ -1,5 +1,7 @@
 package br.com.andre.apiclient.model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +11,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -26,13 +29,11 @@ public class Client {
     private String cpf;
 
     private String name;
-    private LocalDate birthDate;
+    private Date birthDate;
 
     @JoinColumn(name = "idAddress", nullable = false)
     @ManyToOne
     private Address address;
-
-
 
 
 }
